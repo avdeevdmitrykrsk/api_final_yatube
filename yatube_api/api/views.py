@@ -40,15 +40,6 @@ class FollowViewSet(FollowMixin):
 
     def perform_create(self, serializer):
         user = self.request.user
-        following_list = user.followings.all()
-        follower = get_object_or_404(
-            User, username=serializer.validated_data.get('following')
-        )
-        if (
-            follower == user
-            or follower in following_list
-        ):
-            return Response(status=status.HTTP_400_BAD_REQUEST)
         serializer.save(user=user)
 
 
