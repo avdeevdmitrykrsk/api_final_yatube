@@ -2,7 +2,6 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers, validators
-from rest_framework.relations import SlugRelatedField
 
 # Projects imports
 from posts.models import Comment, Follow, Group, Post
