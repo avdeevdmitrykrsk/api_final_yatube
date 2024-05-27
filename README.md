@@ -54,3 +54,19 @@
 ```python
   python3 manage.py runserver
 ```
+# Пример получения токена:
+### POST Запрос:
+```python
+  http://127.0.0.1:8000/api/v1/jwt/create/
+```
+![token_create_request](https://github.com/avdeevdmitrykrsk/api_final_yatube/blob/master/create_token_request.jpg)
+### Ответ:
+![token_create_response](https://github.com/avdeevdmitrykrsk/api_final_yatube/blob/master/create_token_response.jpg)
+# Пример получения списка постов:
+### GET Запрос:
+```python
+  http://127.0.0.1:8000/api/v1/posts/
+```
+### Ответ:
+![post_listResponse](https://github.com/avdeevdmitrykrsk/api_final_yatube/blob/master/post_list_response.jpg)
+
