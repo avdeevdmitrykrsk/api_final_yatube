@@ -26,8 +26,11 @@ class Post(models.Model):
         related_name='posts', blank=True, null=True
     )
 
+    class Meta:
+        ordering = ['author__username']
+
     def __str__(self):
-        return self.text
+        return self.text[:19]
 
 
 class Follow(models.Model):
