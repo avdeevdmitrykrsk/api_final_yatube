@@ -1,3 +1,19 @@
+# О проекте:
+## Данный проект представляет из себя набор api-эндпоинтов.
+### Стек:
+```python
+  Django==3.2.16
+```
+```python
+  djangorestframework==3.12.4
+```
+```python
+  djoser=2.2.2
+```
+### Спецификация ReDoc:
+```python
+  http://127.0.0.1:8000/redoc/
+```
 # Как запустить проект.
 ### **Клонировать репозиторий и перейти в него в командной строке:**
 ```python 
@@ -69,4 +85,6 @@
 ```
 ### Ответ:
 ![post_listResponse](https://github.com/avdeevdmitrykrsk/api_final_yatube/blob/master/post_list_response.jpg)
-
+# Автор:
+### GitHub [avdeevdmitrykrsk](https://github.com/avdeevdmitrykrsk)
+### Telegram [DmitryDmitry](https://t.me/h0mie_s)
