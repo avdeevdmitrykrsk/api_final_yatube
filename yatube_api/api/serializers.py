@@ -1,6 +1,5 @@
 # Thirdparty imports
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from rest_framework import serializers, validators
 
 # Projects imports
@@ -25,13 +24,15 @@ class FollowSerializer(serializers.ModelSerializer):
         default=serializers.CurrentUserDefault(),
         slug_field='username'
     )
-    following = serializers.CharField(max_length=64)
+    following = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        slug_field='username'
+    )
 
-    def create(self, validated_data):
-        username = validated_data['following']
-        following = get_object_or_404(User, username=username)
-        validated_data['following'] = following
-        return Follow.objects.create(**validated_data)
+    def validate_following(self, value):
+        if value.username == self.context.get('request').user.username:
+            raise serializers.ValidationError('Нельзя подписываться на себя!')
+        return value
 
     class Meta:
         model = Follow
@@ -39,7 +40,7 @@ class FollowSerializer(serializers.ModelSerializer):
         validators = [
             validators.UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
-                fields=('user',)
+                fields=('user', 'following')
             )
         ]
 
